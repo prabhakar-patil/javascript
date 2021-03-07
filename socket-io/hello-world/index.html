@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Hello world</title>
+   </head>
+   <script src = "/socket.io/socket.io.js"></script>
+   
+   <script>
+      var socket = io();
+      socket.on('message', function(data){document.writeln(data)});
+      socket.on('testerEvent', function(data){document.write("\n");document.writeln(data.description)});
+
+      socket.on('display', function(event) {
+        var d = new Date()
+        document.write(d.toLocaleString(), " <=> [Display] ", event.type, " : ", event[event.type], "<br>")
+      });
+
+      socket.on('vnc', function(event) {
+        var d = new Date()
+        document.write(d.toLocaleString(), " <=> [Vnc] ", event.type, " : ", event[event.type], "<br>")
+      });
+
+      socket.on('network', function(event) {
+        var d = new Date()
+        document.write(d.toLocaleString(), " <=> [Network] ", event.type, " : ", event[event.type], "<br>")
+      });
+
+      socket.on('ssh', function(event) {
+        var d = new Date()
+        document.write(d.toLocaleString(), " <=> [SSH] ", event.type, " : ", event[event.type], "<br>")
+      });
+
+      socket.on('ping', function(event) {
+        var d = new Date()
+        document.write(d.toLocaleString(), " <=> [Ping] ", event.type, " : ", event[event.type], "<br>")
+      });
+
+      socket.on('networkproxy', function(event) {
+        var d = new Date()
+        document.write(d.toLocaleString(), " <=> [NetworkProxy] ", event.type, " : ", event[event.type], "<br>")
+      });
+
+      socket.on('datetime', function(event) {
+        var d = new Date()
+        document.write(d.toLocaleString(), " <=> [DateTime] ", event.type, " : ", event[event.type], "<br>")
+      });
+
+      socket.on('timezone', function(event) {
+        var d = new Date()
+        document.write(d.toLocaleString(), " <=> [timezone] ", event.type, " : ", event[event.type], "<br>")
+      });
+
+      socket.on('ntp', function(event) {
+        var d = new Date()
+        document.write(d.toLocaleString(), " <=> [NTP] ", event.type, " : ", event[event.type], "<br>")
+      });
+   </script>
+   <body>Hello world</body>
+</html>
+
